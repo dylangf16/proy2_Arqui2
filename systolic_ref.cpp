@@ -20,51 +20,75 @@ struct PE {
     AccT  psum = 0;
 };
 
+// Función auxiliar para imprimir una matriz
+template<typename T>
+void print_mat(const std::array<std::array<T,N>,N>& M, char name) {
+    std::cout << "   Mat " << name << ":\n";
+    for(int i=0;i<N;++i) {
+        std::cout << "    ";
+        for(int j=0;j<N;++j)
+            std::cout << std::setw(6) << M[i][j] << ' ';
+        std::cout << "\n";
+    }
+    std::cout << "\n";
+}
+
 // Simula la multiplicación de matrices A×B usando un arreglo sistólico NxN
-void simulate_systolic(const MatA& A, const MatB& B, MatC& C) {
-    // 1) Inicializa la malla de PEs
-    std::array<std::array<PE, N>, N> mesh{};
+void simulate_systolic(const MatA& A, const MatB& B, MatC& C, bool debug=false) {
+    std::array<std::array<PE,N>,N> mesh{};
+    int total_cycles = 3*N - 2;
 
-    // 2) Número total de ciclos: inyección (2N−1) + latencia de flush (N−1) = 3N−2
-    int total_cycles = 3 * N - 2;
-
-    for (int t = 0; t < total_cycles; ++t) {
-        // 3) Inyectar A en la columna 0 (o cero si ya no hay datos)
-        for (int i = 0; i < N; ++i) {
+    for(int t=0; t<total_cycles; ++t) {
+        // inyecta A en columna 0 / B en fila 0 (ó ceros)
+        for(int i=0;i<N;++i) {
             int k = t - i;
-            mesh[i][0].a = (0 <= k && k < N) ? A[i][k] : DataT(0);
+            mesh[i][0].a = (0<=k && k<N) ? A[i][k] : 0;
         }
-        // 4) Inyectar B en la fila 0 (o cero si ya no hay datos)
-        for (int j = 0; j < N; ++j) {
+        for(int j=0;j<N;++j) {
             int k = t - j;
-            mesh[0][j].b = (0 <= k && k < N) ? B[k][j] : DataT(0);
+            mesh[0][j].b = (0<=k && k<N) ? B[k][j] : 0;
         }
 
-        // 5) Preparar buffers para el desplazamiento
-        std::array<std::array<DataT, N>, N> nextA{};
-        std::array<std::array<DataT, N>, N> nextB{};
+        // buffers para shift
+        std::array<std::array<DataT,N>,N> nextA{};
+        std::array<std::array<DataT,N>,N> nextB{};
 
-        // 6) Cada PE multiplica y acumula, y prepara sus datos para desplazar
-        for (int i = 0; i < N; ++i) {
-            for (int j = 0; j < N; ++j) {
-                PE &pe = mesh[i][j];
-                pe.psum += AccT(pe.a) * AccT(pe.b);
-                if (j + 1 < N) nextA[i][j + 1] = pe.a;
-                if (i + 1 < N) nextB[i + 1][j] = pe.b;
+        // cada PE multiplica y acumula, y programa su shift
+        for(int i=0;i<N;++i){
+            for(int j=0;j<N;++j){
+                auto &pe = mesh[i][j];
+                pe.psum += AccT(pe.a)*AccT(pe.b);
+                if(j+1<N) nextA[i][j+1] = pe.a;
+                if(i+1<N) nextB[i+1][j] = pe.b;
             }
         }
-        // 7) Actualizar las señales a/b de cada PE para el próximo ciclo
-        for (int i = 0; i < N; ++i) {
-            for (int j = 0; j < N; ++j) {
+        // actualiza a/b
+        for(int i=0;i<N;++i)
+            for(int j=0;j<N;++j){
                 mesh[i][j].a = nextA[i][j];
                 mesh[i][j].b = nextB[i][j];
             }
-        }
+
+            if (debug) {
+                // extraer tres matrices auxiliares para imprimir
+                std::array<std::array<DataT,N>,N> MA{}, MB{};
+                std::array<std::array<AccT, N>,N>  MP{};
+                for(int i=0;i<N;++i)
+                    for(int j=0;j<N;++j){
+                        MA[i][j] = mesh[i][j].a;
+                        MB[i][j] = mesh[i][j].b;
+                        MP[i][j] = mesh[i][j].psum;
+                    }
+                    std::cout << "=== Cycle t="<<t<<" ===\n";
+                print_mat(MA,'A');
+                print_mat(MB,'B');
+                print_mat(MP,'P');
+            }
     }
 
-    // 8) Extraer los psums finales al resultado C
-    for (int i = 0; i < N; ++i)
-        for (int j = 0; j < N; ++j)
+    // vuelca resultados
+    for(int i=0;i<N;++i)
+        for(int j=0;j<N;++j)
             C[i][j] = mesh[i][j].psum;
 }
 
@@ -105,7 +129,7 @@ int main() {
     }};
 
     MatC C;
-    simulate_systolic(A, B, C);
+    simulate_systolic(A, B, C, /*debug=*/true);
 
     // Comparar cada elemento con el resultado esperado
     for (int i = 0; i < N; ++i)
