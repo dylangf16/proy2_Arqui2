@@ -4,79 +4,114 @@
 #include <iomanip>
 #include <cassert>
 
-// Dimensión del arreglo y tipo de datos
-constexpr int N = 16;
-using DataT = int16_t;      // 16-bit signed fixed-point
-using AccT  = int32_t;      // Acumulador de 32 bits
+// Dimensión del arreglo (8×8 PEs)
+constexpr int N = 8;
+using DataT = int16_t;   // 16-bit signed fixed-point
+using AccT  = int32_t;   // Acumulador de 32 bits
 
-// Simula la multiplicación de matrices (directa) como simplificación del flujo WS
-void simulate_systolic(
-    const std::array<std::array<DataT, N>, N> &A,
-    const std::array<std::array<DataT, N>, N> &B,
-    std::array<std::array<AccT, N>, N> &C)
-{
-    // Reiniciar y calcular C = A * B
-    for(int i = 0; i < N; ++i) {
-        for(int j = 0; j < N; ++j) {
-            AccT sum = 0;
-            for(int k = 0; k < N; ++k) {
-                sum += static_cast<AccT>(A[i][k]) * static_cast<AccT>(B[k][j]);
+// Alias para las tres matrices
+using MatA = std::array<std::array<DataT, N>, N>;
+using MatB = std::array<std::array<DataT, N>, N>;
+using MatC = std::array<std::array<AccT,  N>, N>;
+
+// Cada Processing Element guarda su a, b y suma parcial
+struct PE {
+    DataT a = 0, b = 0;
+    AccT  psum = 0;
+};
+
+// Simula la multiplicación de matrices A×B usando un arreglo sistólico NxN
+void simulate_systolic(const MatA& A, const MatB& B, MatC& C) {
+    // 1) Inicializa la malla de PEs
+    std::array<std::array<PE, N>, N> mesh{};
+
+    // 2) Número total de ciclos: inyección (2N−1) + latencia de flush (N−1) = 3N−2
+    int total_cycles = 3 * N - 2;
+
+    for (int t = 0; t < total_cycles; ++t) {
+        // 3) Inyectar A en la columna 0 (o cero si ya no hay datos)
+        for (int i = 0; i < N; ++i) {
+            int k = t - i;
+            mesh[i][0].a = (0 <= k && k < N) ? A[i][k] : DataT(0);
+        }
+        // 4) Inyectar B en la fila 0 (o cero si ya no hay datos)
+        for (int j = 0; j < N; ++j) {
+            int k = t - j;
+            mesh[0][j].b = (0 <= k && k < N) ? B[k][j] : DataT(0);
+        }
+
+        // 5) Preparar buffers para el desplazamiento
+        std::array<std::array<DataT, N>, N> nextA{};
+        std::array<std::array<DataT, N>, N> nextB{};
+
+        // 6) Cada PE multiplica y acumula, y prepara sus datos para desplazar
+        for (int i = 0; i < N; ++i) {
+            for (int j = 0; j < N; ++j) {
+                PE &pe = mesh[i][j];
+                pe.psum += AccT(pe.a) * AccT(pe.b);
+                if (j + 1 < N) nextA[i][j + 1] = pe.a;
+                if (i + 1 < N) nextB[i + 1][j] = pe.b;
             }
-            C[i][j] = sum;
+        }
+        // 7) Actualizar las señales a/b de cada PE para el próximo ciclo
+        for (int i = 0; i < N; ++i) {
+            for (int j = 0; j < N; ++j) {
+                mesh[i][j].a = nextA[i][j];
+                mesh[i][j].b = nextB[i][j];
+            }
         }
     }
-}
 
-// Función de prueba para validar un caso 2x2
-void test_case_2x2() {
-    std::array<std::array<DataT, N>, N> A{};
-    std::array<std::array<DataT, N>, N> B{};
-    std::array<std::array<AccT, N>, N> C{};
-
-    // Matrices de prueba 2x2
-    A[0][0] = 1; A[0][1] = 2;
-    A[1][0] = 3; A[1][1] = 4;
-    B[0][0] = 5; B[0][1] = 6;
-    B[1][0] = 7; B[1][1] = 8;
-
-    simulate_systolic(A, B, C);
-
-    // Resultados esperados
-    assert(C[0][0] == 19);
-    assert(C[0][1] == 22);
-    assert(C[1][0] == 43);
-    assert(C[1][1] == 50);
-
-    std::cout << "[TEST 2x2] Pasó correctamente.\n";
+    // 8) Extraer los psums finales al resultado C
+    for (int i = 0; i < N; ++i)
+        for (int j = 0; j < N; ++j)
+            C[i][j] = mesh[i][j].psum;
 }
 
 int main() {
-    // Matrices de ejemplo 16x16
-    std::array<std::array<DataT, N>, N> A_main;
-    std::array<std::array<DataT, N>, N> B_main;
-    std::array<std::array<AccT,  N>, N> C_main{};
+    // Matrices hardcodeadas para prueba de 8×8
+    constexpr MatA A = {{
+        {{  1,  2,  3,  4,  5,  6,  7,  8 }},
+        {{  9, 10, 11, 12, 13, 14, 15, 16 }},
+        {{ 17, 18, 19, 20, 21, 22, 23, 24 }},
+        {{ 25, 26, 27, 28, 29, 30, 31, 32 }},
+        {{ 33, 34, 35, 36, 37, 38, 39, 40 }},
+        {{ 41, 42, 43, 44, 45, 46, 47, 48 }},
+        {{ 49, 50, 51, 52, 53, 54, 55, 56 }},
+        {{ 57, 58, 59, 60, 61, 62, 63, 64 }}
+    }};
 
-    for(int i = 0; i < N; ++i) {
-        for(int j = 0; j < N; ++j) {
-            A_main[i][j] = static_cast<DataT>(i + j);
-            B_main[i][j] = static_cast<DataT>(i - j);
-        }
-    }
+    constexpr MatB B = {{
+        {{ 64, 63, 62, 61, 60, 59, 58, 57 }},
+        {{ 56, 55, 54, 53, 52, 51, 50, 49 }},
+        {{ 48, 47, 46, 45, 44, 43, 42, 41 }},
+        {{ 40, 39, 38, 37, 36, 35, 34, 33 }},
+        {{ 32, 31, 30, 29, 28, 27, 26, 25 }},
+        {{ 24, 23, 22, 21, 20, 19, 18, 17 }},
+        {{ 16, 15, 14, 13, 12, 11, 10,  9 }},
+        {{  8,  7,  6,  5,  4,  3,  2,  1 }}
+    }};
 
-    // Ejecutar simulación principal
-    simulate_systolic(A_main, B_main, C_main);
+    // Resultado teórico de A x B
+    constexpr MatC C_expected = {{
+        {{  960,   924,   888,   852,   816,   780,   744,   708 }},
+        {{ 3264,  3164,  3064,  2964,  2864,  2764,  2664,  2564 }},
+        {{ 5568,  5404,  5240,  5076,  4912,  4748,  4584,  4420 }},
+        {{ 7872,  7644,  7416,  7188,  6960,  6732,  6504,  6276 }},
+        {{10176,  9884,  9592,  9300,  9008,  8716,  8424,  8132 }},
+        {{12480, 12124, 11768, 11412, 11056, 10700, 10344,  9988 }},
+        {{14784, 14364, 13944, 13524, 13104, 12684, 12264, 11844 }},
+        {{17088, 16604, 16120, 15636, 15152, 14668, 14184, 13700 }}
+    }};
 
-    // Imprimir matriz resultado
-    std::cout << "Resultado C = A x B (16x16):\n";
-    for(int i = 0; i < N; ++i) {
-        for(int j = 0; j < N; ++j) {
-            std::cout << std::setw(6) << C_main[i][j] << " ";
-        }
-        std::cout << "\n";
-    }
+    MatC C;
+    simulate_systolic(A, B, C);
 
-    // Ejecutar prueba constante
-    test_case_2x2();
+    // Comparar cada elemento con el resultado esperado
+    for (int i = 0; i < N; ++i)
+        for (int j = 0; j < N; ++j)
+            assert(C[i][j] == C_expected[i][j]);
 
+    std::cout << "[TEST 8×8 Hardcode] Pasó correctamente.\n";
     return 0;
 }
