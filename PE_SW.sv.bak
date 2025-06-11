@@ -1,0 +1,45 @@
+//------------------------------------------------------------------------------
+// Module: PE_SW
+// Descripción: Elemento de procesamiento único que multiplica dos valores
+// de 16 bits con signo, acumula en un registro de 32 bits y desplaza A y B
+// a los vecinos (derecha/abajo) en el siguiente ciclo.
+//------------------------------------------------------------------------------
+module PE_SW #(
+    parameter DATA_WIDTH = 16,   // ancho de datos de A y B
+    parameter ACC_WIDTH  = 32    // ancho del acumulador psum
+)(
+    input  logic                       clk,
+    input  logic                       rst_n,      // reset activo-bajo
+    // entradas de este ciclo
+    input  logic signed [DATA_WIDTH-1:0] A_in,
+    input  logic signed [DATA_WIDTH-1:0] B_in,
+    input  logic signed [ACC_WIDTH -1:0] psum_in,
+    // salidas hacia los vecinos (disponibles el siguiente ciclo)
+    output logic signed [DATA_WIDTH-1:0] A_out,
+    output logic signed [DATA_WIDTH-1:0] B_out,
+    output logic signed [ACC_WIDTH -1:0] psum_out
+);
+
+    // registros internos para retener A, B y psum
+    logic signed [DATA_WIDTH-1:0] A_reg, B_reg;
+    logic signed [ACC_WIDTH -1:0] psum_reg;
+
+    // Lógica secuencial: en cada flanco de reloj
+    always_ff @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            A_reg    <= '0;
+            B_reg    <= '0;
+            psum_reg <= '0;
+        end else begin
+            A_reg    <= A_in;
+            B_reg    <= B_in;
+            psum_reg <= psum_in + (A_in * B_in);
+        end
+    end
+
+    // Salidas: desplazan A y B, y exponen el acumulador
+    assign A_out   = A_reg;
+    assign B_out   = B_reg;
+    assign psum_out = psum_reg;
+
+endmodule

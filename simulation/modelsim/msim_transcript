@@ -1,0 +1,120 @@
+# Reading D:/intelFPGA_lite/18.1/modelsim_ase/tcl/vsim/pref.tcl
+# do diosporfavor_run_msim_rtl_verilog.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 10.5b Lib Mapping Utility 2016.10 Oct  5 2016
+# vmap work rtl_work 
+# Copying D:/intelFPGA_lite/18.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlog -sv -work work +incdir+D:/Arqui2/sis {D:/Arqui2/sis/PE_SW.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:16:27 on Jun 11,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/Arqui2/sis" D:/Arqui2/sis/PE_SW.sv 
+# -- Compiling module PE_SW
+# 
+# Top level modules:
+# 	PE_SW
+# End time: 15:16:27 on Jun 11,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+D:/Arqui2/sis {D:/Arqui2/sis/SystolicArray8x8.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:16:27 on Jun 11,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/Arqui2/sis" D:/Arqui2/sis/SystolicArray8x8.sv 
+# -- Compiling module SystolicArray8x8
+# 
+# Top level modules:
+# 	SystolicArray8x8
+# End time: 15:16:27 on Jun 11,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vlog -sv -work work +incdir+D:/Arqui2/sis {D:/Arqui2/sis/tb_systolic8x8.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:16:27 on Jun 11,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/Arqui2/sis" D:/Arqui2/sis/tb_systolic8x8.sv 
+# -- Compiling module tb_systolic8x8
+# 
+# Top level modules:
+# 	tb_systolic8x8
+# End time: 15:16:27 on Jun 11,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs="+acc"  tb_systolic8x8
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs=""+acc"" tb_systolic8x8 
+# Start time: 15:16:30 on Jun 11,2025
+# Loading sv_std.std
+# Loading work.tb_systolic8x8
+# Loading work.SystolicArray8x8
+# Loading work.PE_SW
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run -all
+# Iniciando simulación del arreglo sistólico 8x8...
+# Matriz A:
+# Fila 0:   1   2   3   4   5   6   7   8 
+# Fila 1:   9  10  11  12  13  14  15  16 
+# Fila 2:  17  18  19  20  21  22  23  24 
+# Fila 3:  25  26  27  28  29  30  31  32 
+# Fila 4:  33  34  35  36  37  38  39  40 
+# Fila 5:  41  42  43  44  45  46  47  48 
+# Fila 6:  49  50  51  52  53  54  55  56 
+# Fila 7:  57  58  59  60  61  62  63  64 
+# Matriz B:
+# Fila 0:  64  63  62  61  60  59  58  57 
+# Fila 1:  56  55  54  53  52  51  50  49 
+# Fila 2:  48  47  46  45  44  43  42  41 
+# Fila 3:  40  39  38  37  36  35  34  33 
+# Fila 4:  32  31  30  29  28  27  26  25 
+# Fila 5:  24  23  22  21  20  19  18  17 
+# Fila 6:  16  15  14  13  12  11  10   9 
+# Fila 7:   8   7   6   5   4   3   2   1 
+# Ciclo  0: A_in = [  1,  0,  0,  0,  0,  0,  0,  0], B_in = [ 64,  0,  0,  0,  0,  0,  0,  0]
+# Ciclo  1: A_in = [  2,  9,  0,  0,  0,  0,  0,  0], B_in = [ 56, 63,  0,  0,  0,  0,  0,  0]
+# Ciclo  2: A_in = [  3, 10, 17,  0,  0,  0,  0,  0], B_in = [ 48, 55, 62,  0,  0,  0,  0,  0]
+# Ciclo  3: A_in = [  4, 11, 18, 25,  0,  0,  0,  0], B_in = [ 40, 47, 54, 61,  0,  0,  0,  0]
+# Ciclo  4: A_in = [  5, 12, 19, 26, 33,  0,  0,  0], B_in = [ 32, 39, 46, 53, 60,  0,  0,  0]
+# Ciclo  5: A_in = [  6, 13, 20, 27, 34, 41,  0,  0], B_in = [ 24, 31, 38, 45, 52, 59,  0,  0]
+# Ciclo  6: A_in = [  7, 14, 21, 28, 35, 42, 49,  0], B_in = [ 16, 23, 30, 37, 44, 51, 58,  0]
+# Ciclo  7: A_in = [  8, 15, 22, 29, 36, 43, 50, 57], B_in = [  8, 15, 22, 29, 36, 43, 50, 57]
+# Ciclo  8: A_in = [  0, 16, 23, 30, 37, 44, 51, 58], B_in = [  0,  7, 14, 21, 28, 35, 42, 49]
+# Ciclo  9: A_in = [  0,  0, 24, 31, 38, 45, 52, 59], B_in = [  0,  0,  6, 13, 20, 27, 34, 41]
+# Ciclo 10: A_in = [  0,  0,  0, 32, 39, 46, 53, 60], B_in = [  0,  0,  0,  5, 12, 19, 26, 33]
+# Ciclo 11: A_in = [  0,  0,  0,  0, 40, 47, 54, 61], B_in = [  0,  0,  0,  0,  4, 11, 18, 25]
+# Ciclo 12: A_in = [  0,  0,  0,  0,  0, 48, 55, 62], B_in = [  0,  0,  0,  0,  0,  3, 10, 17]
+# Ciclo 13: A_in = [  0,  0,  0,  0,  0,  0, 56, 63], B_in = [  0,  0,  0,  0,  0,  0,  2,  9]
+# Ciclo 14: A_in = [  0,  0,  0,  0,  0,  0,  0, 64], B_in = [  0,  0,  0,  0,  0,  0,  0,  1]
+# 
+# Matriz C resultante (A*B) después de 25 ciclos:
+# Fila 0:    960    924    888    852    816    780    744    708 
+# Fila 1:   3264   3164   3064   2964   2864   2764   2664   2564 
+# Fila 2:   5568   5404   5240   5076   4912   4748   4584   4420 
+# Fila 3:   7872   7644   7416   7188   6960   6732   6504   6276 
+# Fila 4:  10176   9884   9592   9300   9008   8716   8424   8132 
+# Fila 5:  12480  12124  11768  11412  11056  10700  10344   9988 
+# Fila 6:  14784  14364  13944  13524  13104  12684  12264  11844 
+# Fila 7:  17088  16604  16120  15636  15152  14668  14184  13700 
+# 
+# Matriz C_ref (referencia):
+# Fila 0:    960    924    888    852    816    780    744    708 
+# Fila 1:   3264   3164   3064   2964   2864   2764   2664   2564 
+# Fila 2:   5568   5404   5240   5076   4912   4748   4584   4420 
+# Fila 3:   7872   7644   7416   7188   6960   6732   6504   6276 
+# Fila 4:  10176   9884   9592   9300   9008   8716   8424   8132 
+# Fila 5:  12480  12124  11768  11412  11056  10700  10344   9988 
+# Fila 6:  14784  14364  13944  13524  13104  12684  12264  11844 
+# Fila 7:  17088  16604  16120  15636  15152  14668  14184  13700 
+# 
+# === TEST PASADO: Todos los elementos coinciden. ===
+# ** Note: $finish    : D:/Arqui2/sis/tb_systolic8x8.sv(194)
+#    Time: 325 ps  Iteration: 1  Instance: /tb_systolic8x8
+# 1
+# Break in Module tb_systolic8x8 at D:/Arqui2/sis/tb_systolic8x8.sv line 194
+# End time: 15:17:23 on Jun 11,2025, Elapsed time: 0:00:53
+# Errors: 0, Warnings: 0

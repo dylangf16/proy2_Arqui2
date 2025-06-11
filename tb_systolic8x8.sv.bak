@@ -1,0 +1,32 @@
+//------------------------------------------------------------------------------
+// Testbench corregido: tb_systolic8x8.sv
+//------------------------------------------------------------------------------
+
+module tb_systolic8x8;
+
+    // Reloj y reset
+    logic clk;
+    logic rst_n;
+
+    // Entradas al arreglo
+    logic signed [15:0] A_in_tb [0:7];
+    logic signed [15:0] B_in_tb [0:7];
+
+    // Salidas del arreglo
+    logic signed [31:0] C_out_tb [0:7][0:7];
+
+    // Matrices de referencia (declaradas en ámbito de módulo)
+    logic signed [15:0] A_matrix [0:7][0:7];
+    logic signed [15:0] B_matrix [0:7][0:7];
+    logic signed [31:0] C_ref     [0:7][0:7];
+
+    // Variables de conteo
+    integer i, j, t, errors;
+
+    // Instancia del DUT
+    SystolicArray8x8 #(
+        .DATA_WIDTH(16),
+        .ACC_WIDTH (32)
+    ) dut (
+        .clk   (clk),
+        .rst_n (rst_n),
