@@ -1,0 +1,74 @@
+//------------------------------------------------------------------------------
+// avl_sdram_if.sv
+//------------------------------------------------------------------------------
+// Esta interfaz agrupa todos los puertos Avalon–MM de tu sdram.v
+// y ofrece dos tareas: read() y write() para simplificar su uso.
+//
+interface avl_sdram_if
+  #( parameter ADDR_WIDTH  = 25,
+     parameter DATA_WIDTH  = 16,
+     parameter BE_WIDTH    = DATA_WIDTH/8 )
+  ( input  logic              clk,
+    input  logic              reset_n );
+
+  // Señales Avalon–MM Master → Slave
+  logic [ADDR_WIDTH-1:0]      address;
+  logic [BE_WIDTH-1:0]        byteenable_n;
+  logic                       chipselect;
+  logic                       read_n;
+  logic                       write_n;
+  logic [DATA_WIDTH-1:0]      writedata;
+
+  // Señales Slave → Master
+  logic [DATA_WIDTH-1:0]      readdata;
+  logic                       readdatavalid;
+  logic                       waitrequest;
+
+  // Tarea de escritura
+  task automatic write(
+    input  logic [ADDR_WIDTH-1:0]  addr,
+    input  logic [DATA_WIDTH-1:0]  data
+  );
+    // Espera flanco activo de reloj
+    @(posedge clk);
+    // Coloca la dirección y datos
+    address      <= addr;
+    byteenable_n <= '0;        // habilita todos los bytes
+    chipselect   <= 1;
+    writedata    <= data;
+    write_n      <= 0;
+    read_n       <= 1;
+    // Avanza un ciclo para tomar la petición
+    @(posedge clk);
+    write_n      <= 1;
+    // Espera a que el esclavo libere waitrequest
+    do @(posedge clk); while (waitrequest);
+    // Desactiva chipselect
+    chipselect   <= 0;
+  endtask
+
+  // Tarea de lectura
+  task automatic read(
+    input  logic [ADDR_WIDTH-1:0]  addr,
+    output logic [DATA_WIDTH-1:0]  data
+  );
+    @(posedge clk);
+    address      <= addr;
+    byteenable_n <= '0;
+    chipselect   <= 1;
+    read_n       <= 0;
+    write_n      <= 1;
+    @(posedge clk);
+    read_n       <= 1;
+    // Espera readdatavalid para capturar el dato
+    do @(posedge clk); while (!readdatavalid);
+    data         = readdata;
+    chipselect   <= 0;
+  endtask
+
+  // Reset lógica: limpias las señales
+  modport master ( input  readdata, readdatavalid, waitrequest,
+                   output address, byteenable_n, chipselect,
+                          read_n, write_n, writedata );
+
+endinterface

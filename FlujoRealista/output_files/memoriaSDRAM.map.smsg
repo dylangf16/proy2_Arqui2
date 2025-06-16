@@ -1,0 +1,1 @@
+Warning (10268): Verilog HDL information at top_sdram_7seg.sv(70): always construct contains both blocking and non-blocking assignments File: /home/dylanggf/Documents/Arqui2/intentomio/output_files/top_sdram_7seg.sv Line: 70
