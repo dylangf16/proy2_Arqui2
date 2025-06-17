@@ -6,7 +6,7 @@ JedecChain;
 	P ActionCode(Ign)
 		Device PartName(SOCVHPS) MfrSpec(OpMask(0));
 	P ActionCode(Cfg)
-		Device PartName(5CSEMA5F31) Path("/home/dylanggf/Documents/Arqui2/Proy2Final/output_files/") File("proyecto2.sof") MfrSpec(OpMask(1));
+		Device PartName(5CSEMA5F31) Path("/home/dylanggf/Documents/Arqui2/proy2_Arqui2/FlujoRealista/output_files/") File("proyecto2.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

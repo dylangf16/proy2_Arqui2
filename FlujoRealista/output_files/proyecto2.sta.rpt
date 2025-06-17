@@ -1,5 +1,5 @@
 Timing Analyzer report for proyecto2
-Mon Jun 16 15:46:29 2025
+Mon Jun 16 21:46:55 2025
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -102,18 +102,18 @@ refer to the applicable agreement for further details.
 ; Number detected on machine ; 8           ;
 ; Maximum allowed            ; 8           ;
 ;                            ;             ;
-; Average used               ; 3.34        ;
+; Average used               ; 3.25        ;
 ; Maximum used               ; 8           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;  35.3%      ;
-;     Processor 3            ;  35.2%      ;
-;     Processor 4            ;  35.2%      ;
-;     Processor 5            ;  32.0%      ;
-;     Processor 6            ;  32.0%      ;
-;     Processor 7            ;  32.0%      ;
-;     Processor 8            ;  32.0%      ;
+;     Processor 2            ;  34.4%      ;
+;     Processor 3            ;  33.5%      ;
+;     Processor 4            ;  33.3%      ;
+;     Processor 5            ;  31.0%      ;
+;     Processor 6            ;  31.0%      ;
+;     Processor 7            ;  31.0%      ;
+;     Processor 8            ;  31.0%      ;
 +----------------------------+-------------+
 
 
@@ -122,7 +122,7 @@ refer to the applicable agreement for further details.
 +--------------------------------------------------------+--------+--------------------------+
 ; SDC File Path                                          ; Status ; Read at                  ;
 +--------------------------------------------------------+--------+--------------------------+
-; sdram/synthesis/submodules/altera_reset_controller.sdc ; OK     ; Mon Jun 16 15:46:15 2025 ;
+; sdram/synthesis/submodules/altera_reset_controller.sdc ; OK     ; Mon Jun 16 21:46:41 2025 ;
 +--------------------------------------------------------+--------+--------------------------+
 
 
@@ -142,8 +142,8 @@ refer to the applicable agreement for further details.
 +------------+-----------------+-------------------------------------------------------------------------------------------------+------+
 ; Fmax       ; Restricted Fmax ; Clock Name                                                                                      ; Note ;
 +------------+-----------------+-------------------------------------------------------------------------------------------------+------+
-; 43.67 MHz  ; 43.67 MHz       ; clk_clk                                                                                         ;      ;
-; 145.56 MHz ; 145.56 MHz      ; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;      ;
+; 43.83 MHz  ; 43.83 MHz       ; clk_clk                                                                                         ;      ;
+; 161.52 MHz ; 161.52 MHz      ; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;      ;
 +------------+-----------------+-------------------------------------------------------------------------------------------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -159,8 +159,8 @@ HTML report is unavailable in plain text report export.
 +-------------------------------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                                           ; Slack  ; End Point TNS ;
 +-------------------------------------------------------------------------------------------------+--------+---------------+
-; clk_clk                                                                                         ; -6.728 ; -151.373      ;
-; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; -5.832 ; -206.036      ;
+; clk_clk                                                                                         ; -6.830 ; -142.238      ;
+; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; -5.791 ; -219.997      ;
 +-------------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -169,8 +169,8 @@ HTML report is unavailable in plain text report export.
 +-------------------------------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                                           ; Slack  ; End Point TNS ;
 +-------------------------------------------------------------------------------------------------+--------+---------------+
-; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; -0.207 ; -0.298        ;
-; clk_clk                                                                                         ; 0.057  ; 0.000         ;
+; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; -0.081 ; -0.116        ;
+; clk_clk                                                                                         ; 0.042  ; 0.000         ;
 +-------------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -179,7 +179,7 @@ HTML report is unavailable in plain text report export.
 +-------------------------------------------------------------------------------------------------+-------+---------------+
 ; Clock                                                                                           ; Slack ; End Point TNS ;
 +-------------------------------------------------------------------------------------------------+-------+---------------+
-; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 3.063 ; 0.000         ;
+; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 2.806 ; 0.000         ;
 +-------------------------------------------------------------------------------------------------+-------+---------------+
 
 
@@ -188,7 +188,7 @@ HTML report is unavailable in plain text report export.
 +-------------------------------------------------------------------------------------------------+-------+---------------+
 ; Clock                                                                                           ; Slack ; End Point TNS ;
 +-------------------------------------------------------------------------------------------------+-------+---------------+
-; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.244 ; 0.000         ;
+; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.030 ; 0.000         ;
 +-------------------------------------------------------------------------------------------------+-------+---------------+
 
 
@@ -199,7 +199,7 @@ HTML report is unavailable in plain text report export.
 +-------------------------------------------------------------------------------------------------+-------+---------------+
 ; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; 0.699 ; 0.000         ;
 ; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 2.700 ; 0.000         ;
-; clk_clk                                                                                         ; 9.394 ; 0.000         ;
+; clk_clk                                                                                         ; 9.387 ; 0.000         ;
 +-------------------------------------------------------------------------------------------------+-------+---------------+
 
 
@@ -210,7 +210,7 @@ The design MTBF is not calculated because there are no specified synchronizers i
 Number of Synchronizer Chains Found: 1
 Shortest Synchronizer Chain: 3 Registers
 Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-Worst Case Available Settling Time: 15.354 ns
+Worst Case Available Settling Time: 15.118 ns
 
 
 
@@ -220,8 +220,8 @@ Worst Case Available Settling Time: 15.354 ns
 +------------+-----------------+-------------------------------------------------------------------------------------------------+------+
 ; Fmax       ; Restricted Fmax ; Clock Name                                                                                      ; Note ;
 +------------+-----------------+-------------------------------------------------------------------------------------------------+------+
-; 42.34 MHz  ; 42.34 MHz       ; clk_clk                                                                                         ;      ;
-; 149.84 MHz ; 149.84 MHz      ; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;      ;
+; 42.6 MHz   ; 42.6 MHz        ; clk_clk                                                                                         ;      ;
+; 166.28 MHz ; 166.28 MHz      ; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;      ;
 +------------+-----------------+-------------------------------------------------------------------------------------------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -231,8 +231,8 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-------------------------------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                                           ; Slack  ; End Point TNS ;
 +-------------------------------------------------------------------------------------------------+--------+---------------+
-; clk_clk                                                                                         ; -6.643 ; -152.893      ;
-; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; -5.532 ; -193.506      ;
+; clk_clk                                                                                         ; -6.742 ; -143.572      ;
+; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; -5.493 ; -207.876      ;
 +-------------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -241,8 +241,8 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-------------------------------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                                           ; Slack  ; End Point TNS ;
 +-------------------------------------------------------------------------------------------------+--------+---------------+
-; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; -0.259 ; -0.453        ;
-; clk_clk                                                                                         ; 0.074  ; 0.000         ;
+; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; -0.136 ; -0.220        ;
+; clk_clk                                                                                         ; 0.066  ; 0.000         ;
 +-------------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -251,17 +251,17 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-------------------------------------------------------------------------------------------------+-------+---------------+
 ; Clock                                                                                           ; Slack ; End Point TNS ;
 +-------------------------------------------------------------------------------------------------+-------+---------------+
-; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 3.237 ; 0.000         ;
+; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 2.963 ; 0.000         ;
 +-------------------------------------------------------------------------------------------------+-------+---------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------+
-; Slow 1100mV 0C Model Removal Summary                                                                                    ;
-+-------------------------------------------------------------------------------------------------+-------+---------------+
-; Clock                                                                                           ; Slack ; End Point TNS ;
-+-------------------------------------------------------------------------------------------------+-------+---------------+
-; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.178 ; 0.000         ;
-+-------------------------------------------------------------------------------------------------+-------+---------------+
++--------------------------------------------------------------------------------------------------------------------------+
+; Slow 1100mV 0C Model Removal Summary                                                                                     ;
++-------------------------------------------------------------------------------------------------+--------+---------------+
+; Clock                                                                                           ; Slack  ; End Point TNS ;
++-------------------------------------------------------------------------------------------------+--------+---------------+
+; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; -0.023 ; -0.023        ;
++-------------------------------------------------------------------------------------------------+--------+---------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------+
@@ -282,7 +282,7 @@ The design MTBF is not calculated because there are no specified synchronizers i
 Number of Synchronizer Chains Found: 1
 Shortest Synchronizer Chain: 3 Registers
 Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-Worst Case Available Settling Time: 15.436 ns
+Worst Case Available Settling Time: 15.223 ns
 
 
 
@@ -292,8 +292,8 @@ Worst Case Available Settling Time: 15.436 ns
 +-------------------------------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                                           ; Slack  ; End Point TNS ;
 +-------------------------------------------------------------------------------------------------+--------+---------------+
-; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; -4.320 ; -151.320      ;
-; clk_clk                                                                                         ; -3.920 ; -79.564       ;
+; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; -4.351 ; -158.211      ;
+; clk_clk                                                                                         ; -3.988 ; -75.103       ;
 +-------------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -302,8 +302,8 @@ Worst Case Available Settling Time: 15.436 ns
 +-------------------------------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                                           ; Slack  ; End Point TNS ;
 +-------------------------------------------------------------------------------------------------+--------+---------------+
-; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; -0.108 ; -0.127        ;
-; clk_clk                                                                                         ; 0.001  ; 0.000         ;
+; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; -0.023 ; -0.023        ;
+; clk_clk                                                                                         ; -0.010 ; -0.160        ;
 +-------------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -312,7 +312,7 @@ Worst Case Available Settling Time: 15.436 ns
 +-------------------------------------------------------------------------------------------------+-------+---------------+
 ; Clock                                                                                           ; Slack ; End Point TNS ;
 +-------------------------------------------------------------------------------------------------+-------+---------------+
-; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 4.479 ; 0.000         ;
+; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 4.390 ; 0.000         ;
 +-------------------------------------------------------------------------------------------------+-------+---------------+
 
 
@@ -321,7 +321,7 @@ Worst Case Available Settling Time: 15.436 ns
 +-------------------------------------------------------------------------------------------------+-------+---------------+
 ; Clock                                                                                           ; Slack ; End Point TNS ;
 +-------------------------------------------------------------------------------------------------+-------+---------------+
-; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.189 ; 0.000         ;
+; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.066 ; 0.000         ;
 +-------------------------------------------------------------------------------------------------+-------+---------------+
 
 
@@ -343,7 +343,7 @@ The design MTBF is not calculated because there are no specified synchronizers i
 Number of Synchronizer Chains Found: 1
 Shortest Synchronizer Chain: 3 Registers
 Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-Worst Case Available Settling Time: 17.408 ns
+Worst Case Available Settling Time: 17.204 ns
 
 
 
@@ -353,8 +353,8 @@ Worst Case Available Settling Time: 17.408 ns
 +-------------------------------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                                           ; Slack  ; End Point TNS ;
 +-------------------------------------------------------------------------------------------------+--------+---------------+
-; clk_clk                                                                                         ; -3.795 ; -77.122       ;
-; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; -3.652 ; -127.457      ;
+; clk_clk                                                                                         ; -3.864 ; -72.694       ;
+; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; -3.650 ; -133.537      ;
 +-------------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -363,8 +363,8 @@ Worst Case Available Settling Time: 17.408 ns
 +-------------------------------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                                           ; Slack  ; End Point TNS ;
 +-------------------------------------------------------------------------------------------------+--------+---------------+
-; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; -0.145 ; -0.220        ;
-; clk_clk                                                                                         ; -0.002 ; -0.032        ;
+; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; -0.064 ; -0.098        ;
+; clk_clk                                                                                         ; -0.010 ; -0.160        ;
 +-------------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -373,7 +373,7 @@ Worst Case Available Settling Time: 17.408 ns
 +-------------------------------------------------------------------------------------------------+-------+---------------+
 ; Clock                                                                                           ; Slack ; End Point TNS ;
 +-------------------------------------------------------------------------------------------------+-------+---------------+
-; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 4.658 ; 0.000         ;
+; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 4.573 ; 0.000         ;
 +-------------------------------------------------------------------------------------------------+-------+---------------+
 
 
@@ -382,7 +382,7 @@ Worst Case Available Settling Time: 17.408 ns
 +-------------------------------------------------------------------------------------------------+-------+---------------+
 ; Clock                                                                                           ; Slack ; End Point TNS ;
 +-------------------------------------------------------------------------------------------------+-------+---------------+
-; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.122 ; 0.000         ;
+; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.015 ; 0.000         ;
 +-------------------------------------------------------------------------------------------------+-------+---------------+
 
 
@@ -392,8 +392,8 @@ Worst Case Available Settling Time: 17.408 ns
 ; Clock                                                                                           ; Slack ; End Point TNS ;
 +-------------------------------------------------------------------------------------------------+-------+---------------+
 ; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; 0.699 ; 0.000         ;
-; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 3.035 ; 0.000         ;
-; clk_clk                                                                                         ; 9.405 ; 0.000         ;
+; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 3.036 ; 0.000         ;
+; clk_clk                                                                                         ; 9.406 ; 0.000         ;
 +-------------------------------------------------------------------------------------------------+-------+---------------+
 
 
@@ -404,7 +404,7 @@ The design MTBF is not calculated because there are no specified synchronizers i
 Number of Synchronizer Chains Found: 1
 Shortest Synchronizer Chain: 3 Registers
 Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-Worst Case Available Settling Time: 17.635 ns
+Worst Case Available Settling Time: 17.462 ns
 
 
 
@@ -414,14 +414,14 @@ Worst Case Available Settling Time: 17.635 ns
 +--------------------------------------------------------------------------------------------------+----------+--------+----------+---------+---------------------+
 ; Clock                                                                                            ; Setup    ; Hold   ; Recovery ; Removal ; Minimum Pulse Width ;
 +--------------------------------------------------------------------------------------------------+----------+--------+----------+---------+---------------------+
-; Worst-case Slack                                                                                 ; -6.728   ; -0.259 ; 3.063    ; 0.122   ; 0.699               ;
-;  clk_clk                                                                                         ; -6.728   ; -0.002 ; N/A      ; N/A     ; 9.313               ;
+; Worst-case Slack                                                                                 ; -6.830   ; -0.136 ; 2.806    ; -0.023  ; 0.699               ;
+;  clk_clk                                                                                         ; -6.830   ; -0.010 ; N/A      ; N/A     ; 9.313               ;
 ;  sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; N/A      ; N/A    ; N/A      ; N/A     ; 0.699               ;
-;  sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; -5.832   ; -0.259 ; 3.063    ; 0.122   ; 2.677               ;
-; Design-wide TNS                                                                                  ; -357.409 ; -0.453 ; 0.0      ; 0.0     ; 0.0                 ;
-;  clk_clk                                                                                         ; -152.893 ; -0.032 ; N/A      ; N/A     ; 0.000               ;
+;  sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; -5.791   ; -0.136 ; 2.806    ; -0.023  ; 2.677               ;
+; Design-wide TNS                                                                                  ; -362.235 ; -0.258 ; 0.0      ; -0.023  ; 0.0                 ;
+;  clk_clk                                                                                         ; -143.572 ; -0.160 ; N/A      ; N/A     ; 0.000               ;
 ;  sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; N/A      ; N/A    ; N/A      ; N/A     ; 0.000               ;
-;  sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; -206.036 ; -0.453 ; 0.000    ; 0.000   ; 0.000               ;
+;  sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; -219.997 ; -0.220 ; 0.000    ; -0.023  ; 0.000               ;
 +--------------------------------------------------------------------------------------------------+----------+--------+----------+---------+---------------------+
 
 
@@ -898,9 +898,9 @@ Worst Case Available Settling Time: 17.635 ns
 ; From Clock                                                                                      ; To Clock                                                                                        ; RR Paths     ; FR Paths ; RF Paths ; FF Paths ;
 +-------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+--------------+----------+----------+----------+
 ; clk_clk                                                                                         ; clk_clk                                                                                         ; > 2147483647 ; 0        ; 0        ; 0        ;
-; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; clk_clk                                                                                         ; 44           ; 0        ; 0        ; 0        ;
-; clk_clk                                                                                         ; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 191          ; 0        ; 0        ; 0        ;
-; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 3025         ; 0        ; 0        ; 0        ;
+; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; clk_clk                                                                                         ; 41           ; 0        ; 0        ; 0        ;
+; clk_clk                                                                                         ; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 201          ; 0        ; 0        ; 0        ;
+; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 2853         ; 0        ; 0        ; 0        ;
 +-------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+--------------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -911,9 +911,9 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 ; From Clock                                                                                      ; To Clock                                                                                        ; RR Paths     ; FR Paths ; RF Paths ; FF Paths ;
 +-------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+--------------+----------+----------+----------+
 ; clk_clk                                                                                         ; clk_clk                                                                                         ; > 2147483647 ; 0        ; 0        ; 0        ;
-; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; clk_clk                                                                                         ; 44           ; 0        ; 0        ; 0        ;
-; clk_clk                                                                                         ; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 191          ; 0        ; 0        ; 0        ;
-; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 3025         ; 0        ; 0        ; 0        ;
+; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; clk_clk                                                                                         ; 41           ; 0        ; 0        ; 0        ;
+; clk_clk                                                                                         ; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 201          ; 0        ; 0        ; 0        ;
+; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 2853         ; 0        ; 0        ; 0        ;
 +-------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+--------------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -923,7 +923,7 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +-------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+----------+----------+----------+----------+
 ; From Clock                                                                                      ; To Clock                                                                                        ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +-------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+----------+----------+----------+----------+
-; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 135      ; 0        ; 0        ; 0        ;
+; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 128      ; 0        ; 0        ; 0        ;
 +-------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -933,7 +933,7 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +-------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+----------+----------+----------+----------+
 ; From Clock                                                                                      ; To Clock                                                                                        ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +-------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+----------+----------+----------+----------+
-; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 135      ; 0        ; 0        ; 0        ;
+; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 128      ; 0        ; 0        ; 0        ;
 +-------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -958,9 +958,9 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 0     ; 0    ;
 ; Unconstrained Input Ports       ; 18    ; 18   ;
-; Unconstrained Input Port Paths  ; 8265  ; 8265 ;
+; Unconstrained Input Port Paths  ; 8260  ; 8260 ;
 ; Unconstrained Output Ports      ; 76    ; 76   ;
-; Unconstrained Output Port Paths ; 3050  ; 3050 ;
+; Unconstrained Output Port Paths ; 2924  ; 2924 ;
 +---------------------------------+-------+------+
 
 
@@ -1201,7 +1201,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Mon Jun 16 15:46:13 2025
+    Info: Processing started: Mon Jun 16 21:46:38 2025
 Info: Command: quartus_sta proyecto2 -c proyecto2
 Info: qsta_default_script.tcl version: #1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
@@ -1226,36 +1226,36 @@ Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Analyzing Slow 1100mV 85C Model
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -6.728
+Info (332146): Worst-case setup slack is -6.830
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -6.728            -151.373 clk_clk 
-    Info (332119):    -5.832            -206.036 sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332146): Worst-case hold slack is -0.207
+    Info (332119):    -6.830            -142.238 clk_clk 
+    Info (332119):    -5.791            -219.997 sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332146): Worst-case hold slack is -0.081
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.207              -0.298 sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):     0.057               0.000 clk_clk 
-Info (332146): Worst-case recovery slack is 3.063
+    Info (332119):    -0.081              -0.116 sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.042               0.000 clk_clk 
+Info (332146): Worst-case recovery slack is 2.806
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     3.063               0.000 sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332146): Worst-case removal slack is 0.244
+    Info (332119):     2.806               0.000 sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332146): Worst-case removal slack is 0.030
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.244               0.000 sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.030               0.000 sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
 Info (332146): Worst-case minimum pulse width slack is 0.699
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
     Info (332119):     0.699               0.000 sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] 
     Info (332119):     2.700               0.000 sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):     9.394               0.000 clk_clk 
+    Info (332119):     9.387               0.000 clk_clk 
 Info (332114): Report Metastability: Found 1 synchronizer chains.
     Info (332114): The design MTBF is not calculated because there are no specified synchronizers in the design.
     Info (332114): Number of Synchronizer Chains Found: 1
     Info (332114): Shortest Synchronizer Chain: 3 Registers
     Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-    Info (332114): Worst Case Available Settling Time: 15.354 ns
+    Info (332114): Worst Case Available Settling Time: 15.118 ns
     Info (332114): 
 Info: Analyzing Slow 1100mV 0C Model
 Info (334003): Started post-fitting delay annotation
@@ -1267,24 +1267,24 @@ Info (332097): The following timing edges are non-unate.  The Timing Analyzer wi
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -6.643
+Info (332146): Worst-case setup slack is -6.742
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -6.643            -152.893 clk_clk 
-    Info (332119):    -5.532            -193.506 sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332146): Worst-case hold slack is -0.259
+    Info (332119):    -6.742            -143.572 clk_clk 
+    Info (332119):    -5.493            -207.876 sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332146): Worst-case hold slack is -0.136
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.259              -0.453 sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):     0.074               0.000 clk_clk 
-Info (332146): Worst-case recovery slack is 3.237
+    Info (332119):    -0.136              -0.220 sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.066               0.000 clk_clk 
+Info (332146): Worst-case recovery slack is 2.963
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     3.237               0.000 sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332146): Worst-case removal slack is 0.178
+    Info (332119):     2.963               0.000 sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332146): Worst-case removal slack is -0.023
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.178               0.000 sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    -0.023              -0.023 sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
 Info (332146): Worst-case minimum pulse width slack is 0.699
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
@@ -1296,7 +1296,7 @@ Info (332114): Report Metastability: Found 1 synchronizer chains.
     Info (332114): Number of Synchronizer Chains Found: 1
     Info (332114): Shortest Synchronizer Chain: 3 Registers
     Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-    Info (332114): Worst Case Available Settling Time: 15.436 ns
+    Info (332114): Worst Case Available Settling Time: 15.223 ns
     Info (332114): 
 Info: Analyzing Fast 1100mV 85C Model
 Info (334003): Started post-fitting delay annotation
@@ -1308,24 +1308,24 @@ Info (332097): The following timing edges are non-unate.  The Timing Analyzer wi
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -4.320
+Info (332146): Worst-case setup slack is -4.351
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -4.320            -151.320 sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):    -3.920             -79.564 clk_clk 
-Info (332146): Worst-case hold slack is -0.108
+    Info (332119):    -4.351            -158.211 sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    -3.988             -75.103 clk_clk 
+Info (332146): Worst-case hold slack is -0.023
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.108              -0.127 sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):     0.001               0.000 clk_clk 
-Info (332146): Worst-case recovery slack is 4.479
+    Info (332119):    -0.023              -0.023 sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    -0.010              -0.160 clk_clk 
+Info (332146): Worst-case recovery slack is 4.390
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     4.479               0.000 sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332146): Worst-case removal slack is 0.189
+    Info (332119):     4.390               0.000 sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332146): Worst-case removal slack is 0.066
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.189               0.000 sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.066               0.000 sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
 Info (332146): Worst-case minimum pulse width slack is 0.699
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
@@ -1337,7 +1337,7 @@ Info (332114): Report Metastability: Found 1 synchronizer chains.
     Info (332114): Number of Synchronizer Chains Found: 1
     Info (332114): Shortest Synchronizer Chain: 3 Registers
     Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-    Info (332114): Worst Case Available Settling Time: 17.408 ns
+    Info (332114): Worst Case Available Settling Time: 17.204 ns
     Info (332114): 
 Info: Analyzing Fast 1100mV 0C Model
 Info (332097): The following timing edges are non-unate.  The Timing Analyzer will assume pos-unate behavior for these edges in the clock network.
@@ -1347,43 +1347,43 @@ Info (332097): The following timing edges are non-unate.  The Timing Analyzer wi
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -3.795
+Info (332146): Worst-case setup slack is -3.864
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -3.795             -77.122 clk_clk 
-    Info (332119):    -3.652            -127.457 sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332146): Worst-case hold slack is -0.145
+    Info (332119):    -3.864             -72.694 clk_clk 
+    Info (332119):    -3.650            -133.537 sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332146): Worst-case hold slack is -0.064
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.145              -0.220 sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):    -0.002              -0.032 clk_clk 
-Info (332146): Worst-case recovery slack is 4.658
+    Info (332119):    -0.064              -0.098 sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    -0.010              -0.160 clk_clk 
+Info (332146): Worst-case recovery slack is 4.573
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     4.658               0.000 sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332146): Worst-case removal slack is 0.122
+    Info (332119):     4.573               0.000 sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332146): Worst-case removal slack is 0.015
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.122               0.000 sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.015               0.000 sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
 Info (332146): Worst-case minimum pulse width slack is 0.699
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
     Info (332119):     0.699               0.000 sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] 
-    Info (332119):     3.035               0.000 sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):     9.405               0.000 clk_clk 
+    Info (332119):     3.036               0.000 sdram_controller|sys_sdram_pll_0|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     9.406               0.000 clk_clk 
 Info (332114): Report Metastability: Found 1 synchronizer chains.
     Info (332114): The design MTBF is not calculated because there are no specified synchronizers in the design.
     Info (332114): Number of Synchronizer Chains Found: 1
     Info (332114): Shortest Synchronizer Chain: 3 Registers
     Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-    Info (332114): Worst Case Available Settling Time: 17.635 ns
+    Info (332114): Worst Case Available Settling Time: 17.462 ns
     Info (332114): 
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime Timing Analyzer was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 1762 megabytes
-    Info: Processing ended: Mon Jun 16 15:46:29 2025
-    Info: Elapsed time: 00:00:16
-    Info: Total CPU time (on all processors): 00:00:49
+    Info: Peak virtual memory: 1758 megabytes
+    Info: Processing ended: Mon Jun 16 21:46:55 2025
+    Info: Elapsed time: 00:00:17
+    Info: Total CPU time (on all processors): 00:00:47
 
 

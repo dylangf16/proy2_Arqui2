@@ -37,6 +37,42 @@ module matrix_multiplication_system (
     parameter [24:0] MATRIX_A_BASE = 25'h000000;
     parameter [24:0] MATRIX_B_BASE = 25'h000400;
     parameter [24:0] MATRIX_C_BASE = 25'h000800;
+	 
+	 // NUEVOS REGISTROS DE CONTROL Y ESTADO
+    typedef struct packed {
+        logic enable;           // Habilitar sistema
+        logic step_mode;        // Modo paso a paso
+        logic auto_restart;     // Reinicio automático
+        logic debug_enable;     // Habilitar debug
+        logic [3:0] reserved;   // Reservado para futuro uso
+    } control_reg_t;
+    
+    typedef struct packed {
+        logic [3:0] current_state_id;  // ID del estado actual
+        logic system_ready;            // Sistema listo
+        logic computation_active;      // Computación activa
+        logic error_flag;             // Flag de error
+        logic [2:0] error_code;       // Código de error
+        logic step_complete;          // Paso completado
+        logic [2:0] reserved;         // Reservado
+    } status_reg_t;
+    
+    typedef struct packed {
+        logic [7:0] breakpoint_state;   // Estado donde hacer breakpoint
+        logic [15:0] step_count;        // Contador de pasos
+        logic single_step;              // Un solo paso
+        logic [7:0] reserved;           // Reservado
+    } stepping_reg_t;
+	 
+    logic step_trigger;
+    logic breakpoint_hit;
+    logic can_advance_state;
+    logic [15:0] step_counter;
+	 
+	 // Instancias de los registros
+    control_reg_t control_reg;
+    status_reg_t status_reg;
+    stepping_reg_t stepping_reg;
     
     // Palabra a codificar (6 caracteres): "CIPHER"
     // C=2, I=8, P=15, H=7, E=4, R=17
@@ -82,7 +118,9 @@ module matrix_multiplication_system (
         STORE_RESULTS,
         LOAD_RESULTS,
         DISPLAY_RESULTS,
-        IDLE
+        IDLE,
+        ERROR_STATE,        
+        STEP_WAIT          
     } main_state_t;
     
     main_state_t current_state, next_state;
@@ -133,6 +171,65 @@ module matrix_multiplication_system (
     logic matrix_b_valid;
     logic results_valid;
     logic systolic_data_loaded;
+	 
+	 // Actualización del registro de estado
+    always_ff @(posedge clk_clk or negedge reset_reset_n) begin
+        if (!reset_reset_n) begin
+            status_reg <= '{
+                current_state_id: 4'b0,
+                system_ready: 1'b0,
+                computation_active: 1'b0,
+                error_flag: 1'b0,
+                error_code: 3'b0,
+                step_complete: 1'b0,
+                reserved: 3'b0
+            };
+        end else begin
+            // Mapear estado actual a ID
+            case (current_state)
+                INIT: status_reg.current_state_id <= 4'd0;
+                STORE_MATRIX_A: status_reg.current_state_id <= 4'd1;
+                STORE_MATRIX_B: status_reg.current_state_id <= 4'd2;
+                LOAD_MATRIX_A: status_reg.current_state_id <= 4'd3;
+                LOAD_MATRIX_B: status_reg.current_state_id <= 4'd4;
+                SYSTOLIC_COMPUTE: status_reg.current_state_id <= 4'd5;
+                STORE_RESULTS: status_reg.current_state_id <= 4'd6;
+                LOAD_RESULTS: status_reg.current_state_id <= 4'd7;
+                DISPLAY_RESULTS: status_reg.current_state_id <= 4'd8;
+                ERROR_STATE: status_reg.current_state_id <= 4'd15;
+                default: status_reg.current_state_id <= 4'd9;
+            endcase
+            
+            status_reg.system_ready <= (current_state == DISPLAY_RESULTS) || (current_state == IDLE);
+            status_reg.computation_active <= computing_active;
+            status_reg.step_complete <= (current_state != next_state);
+            
+            // Manejo básico de errores
+            if (state_timeout && current_state != DISPLAY_RESULTS) begin
+                status_reg.error_flag <= 1'b1;
+                status_reg.error_code <= 3'd1; // Timeout error
+            end else if (current_state == ERROR_STATE) begin
+                status_reg.error_code <= 3'd2; // General error
+            end
+        end
+    end
+    
+    // Control de stepping
+    always_comb begin
+        breakpoint_hit = control_reg.step_mode && 
+                        (status_reg.current_state_id == stepping_reg.breakpoint_state[3:0]);
+        
+        step_trigger = btn2_edge && control_reg.step_mode;
+        
+        can_advance_state = control_reg.enable && 
+                           (!control_reg.step_mode || step_trigger || !breakpoint_hit);
+    end
+    
+    // Función básica de monitoreo (solo usa los registros)
+    function logic [31:0] get_system_status();
+        return {status_reg, control_reg[7:0], stepping_reg.step_count};
+    endfunction
+	 
     
     // Instanciación del controlador SDRAM
     sdram sdram_controller (
