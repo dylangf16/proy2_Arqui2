@@ -1,0 +1,62 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/Arqui2/proy2_Arqui2/Pruebas/simulation/modelsim
+vPE_SO
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z2 !s110 1750118894
+!i10b 1
+!s100 FQm_PkW?l2mm;aJjHN2We1
+IOZg^3ZdjDOCP3]IK_Nofj0
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+!s105 PE_SO_sv_unit
+S1
+R0
+w1750114428
+8D:/Arqui2/proy2_Arqui2/FlujoRealista/PE_SO.sv
+FD:/Arqui2/proy2_Arqui2/FlujoRealista/PE_SO.sv
+L0 8
+Z4 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z5 !s108 1750118894.000000
+!s107 D:/Arqui2/proy2_Arqui2/FlujoRealista/PE_SO.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/Arqui2/proy2_Arqui2/FlujoRealista|D:/Arqui2/proy2_Arqui2/FlujoRealista/PE_SO.sv|
+!i113 1
+Z6 o-sv -work work
+!s92 -sv -work work +incdir+D:/Arqui2/proy2_Arqui2/FlujoRealista
+Z7 tCvgOpt 0
+n@p@e_@s@o
+vPE_SO_tb
+R1
+R2
+!i10b 1
+!s100 ETF?DnZ[o0_<AI;RB_zI`0
+Ig6[]c]_7@2=l0[]KIDB>G1
+R3
+!s105 PE_SO_tb_sv_unit
+S1
+R0
+w1750118873
+8D:/Arqui2/proy2_Arqui2/Pruebas/PE_SO_tb.sv
+FD:/Arqui2/proy2_Arqui2/Pruebas/PE_SO_tb.sv
+L0 11
+R4
+r1
+!s85 0
+31
+R5
+!s107 D:/Arqui2/proy2_Arqui2/Pruebas/PE_SO_tb.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/Arqui2/proy2_Arqui2/Pruebas|D:/Arqui2/proy2_Arqui2/Pruebas/PE_SO_tb.sv|
+!i113 1
+R6
+!s92 -sv -work work +incdir+D:/Arqui2/proy2_Arqui2/Pruebas
+R7
+n@p@e_@s@o_tb

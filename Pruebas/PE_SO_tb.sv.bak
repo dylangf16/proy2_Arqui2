@@ -1,0 +1,72 @@
+//------------------------------------------------------------------------------
+// Testbench: PE_SO Unit Test
+//------------------------------------------------------------------------------
+module PE_SO_tb;
+    // Parameters matching the DUT
+    localparam DATA_WIDTH = 16;
+    localparam ACC_WIDTH  = 32;
+
+    // Signals
+    logic                         clk;
+    logic                         rst_n;
+    logic                         enable;
+    logic signed [DATA_WIDTH-1:0] A_in;
+    logic signed [DATA_WIDTH-1:0] B_in;
+    logic signed [ACC_WIDTH -1:0] psum_in;
+    logic signed [DATA_WIDTH-1:0] A_out;
+    logic signed [DATA_WIDTH-1:0] B_out;
+    logic signed [ACC_WIDTH -1:0] psum_out;
+
+    // Instantiate the Unit Under Test
+    PE_SO #(
+        .DATA_WIDTH(DATA_WIDTH),
+        .ACC_WIDTH(ACC_WIDTH)
+    ) uut (
+        .clk    (clk),
+        .rst_n  (rst_n),
+        .enable (enable),
+        .A_in   (A_in),
+        .B_in   (B_in),
+        .psum_in(psum_in),
+        .A_out  (A_out),
+        .B_out  (B_out),
+        .psum_out(psum_out)
+    );
+
+    // Clock generation: 10 time units period
+    initial clk = 0;
+    always #5 clk = ~clk;
+
+    initial begin
+        $display("\n--- PE_SO Unit Test Start ---");
+        // Reset
+        rst_n = 0; enable = 0; A_in = 0; B_in = 0; psum_in = 0;
+        #20 rst_n = 1;
+
+        // Test 1: Single multiply-accumulate
+        A_in = 2; B_in = 3; // expected psum = 2*3 = 6
+        enable = 1;
+        @(posedge clk);
+        // Wait one cycle for outputs to stabilize
+        @(posedge clk);
+        if (A_out !== 2 || B_out !== 3 || psum_out !== 6) begin
+            $error("[FAIL] Test 1: got A_out=%0d, B_out=%0d, psum_out=%0d (expected 2,3,6)",
+                   A_out, B_out, psum_out);
+        end else begin
+            $display("[PASS] Test 1: A_out=%0d, B_out=%0d, psum_out=%0d", A_out, B_out, psum_out);
+        end
+
+        // Test 2: Accumulation over multiple cycles
+        A_in = 4; B_in = 5; // product = 20, accumulation = 6 + 20 = 26
+        @(posedge clk);
+        @(posedge clk);
+        if (psum_out !== 26) begin
+            $error("[FAIL] Test 2: got psum_out=%0d (expected 26)", psum_out);
+        end else begin
+            $display("[PASS] Test 2: psum_out=%0d", psum_out);
+        end
+
+        $display("--- PE_SO Unit Test End ---\n");
+        $finish;
+    end
+endmodule
