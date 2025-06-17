@@ -1,0 +1,65 @@
+//=========================================================
+// TOP MODULE para prueba con JTAG UART (mensaje: "Hola\n")
+// FPGA: DE1-SoC MTL2
+//=========================================================
+module top (
+    input  wire CLOCK_50,
+    input  wire RESET_N
+);
+
+    // Señales JTAG UART
+    wire        uart_chipselect;
+    wire        uart_address;
+    wire        uart_read_n;
+    wire [31:0] uart_readdata;
+    wire        uart_write_n;
+    wire [31:0] uart_writedata;
+    wire        uart_waitrequest;
+
+    // Instancia del sistema Qsys
+    sdram u0 (
+        .clk_clk                 (CLOCK_50),
+        .reset_reset_n          (RESET_N),
+
+        .jtag_uart_0_chipselect (uart_chipselect),
+        .jtag_uart_0_address    (uart_address),
+        .jtag_uart_0_read_n     (uart_read_n),
+        .jtag_uart_0_readdata   (uart_readdata),
+        .jtag_uart_0_write_n    (uart_write_n),
+        .jtag_uart_0_writedata  (uart_writedata),
+        .jtag_uart_0_waitrequest(uart_waitrequest),
+
+        // SDRAM desconectada por ahora
+        .sdram_address          (),
+        .sdram_byteenable_n     (),
+        .sdram_chipselect       (),
+        .sdram_writedata        (),
+        .sdram_read_n           (),
+        .sdram_write_n          (),
+        .sdram_readdata         (),
+        .sdram_readdatavalid    (),
+        .sdram_waitrequest      (),
+        .wire_addr              (),
+        .wire_ba                (),
+        .wire_cas_n             (),
+        .wire_cke               (),
+        .wire_cs_n              (),
+        .wire_dq                (),
+        .wire_dqm               (),
+        .wire_ras_n             (),
+        .wire_we_n              ()
+    );
+
+    // UART Writer confiable con buffer de mensaje
+    uart_writer writer (
+        .clk         (CLOCK_50),
+        .reset_n     (RESET_N),
+        .chipselect  (uart_chipselect),
+        .address     (uart_address),
+        .read_n      (uart_read_n),
+        .write_n     (uart_write_n),
+        .writedata   (uart_writedata),
+        .waitrequest (uart_waitrequest)
+    );
+
+endmodule

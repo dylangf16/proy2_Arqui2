@@ -1,20 +1,20 @@
-Fitter Status : Successful - Mon Jun 16 21:46:25 2025
+Fitter Status : Successful - Mon Jun 16 22:26:46 2025
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : proyecto2
-Top-level Entity Name : matrix_multiplication_system
+Top-level Entity Name : top
 Family : Cyclone V
 Device : 5CSEMA5F31C6
 Timing Models : Final
-Logic utilization (in ALMs) : 3,592 / 32,070 ( 11 % )
-Total registers : 6906
-Total pins : 83 / 457 ( 18 % )
+Logic utilization (in ALMs) : 154 / 32,070 ( < 1 % )
+Total registers : 231
+Total pins : 2 / 457 ( < 1 % )
 Total virtual pins : 0
-Total block memory bits : 0 / 4,065,280 ( 0 % )
-Total RAM Blocks : 0 / 397 ( 0 % )
-Total DSP Blocks : 40 / 87 ( 46 % )
+Total block memory bits : 512 / 4,065,280 ( < 1 % )
+Total RAM Blocks : 1 / 397 ( < 1 % )
+Total DSP Blocks : 0 / 87 ( 0 % )
 Total HSSI RX PCSs : 0
 Total HSSI PMA RX Deserializers : 0
 Total HSSI TX PCSs : 0
 Total HSSI PMA TX Serializers : 0
-Total PLLs : 1 / 6 ( 17 % )
+Total PLLs : 0 / 6 ( 0 % )
 Total DLLs : 0 / 4 ( 0 % )

@@ -1,0 +1,40 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: qsys-generate /home/dylanggf/Documents/Arqui2/proy2_Arqui2/FlujoRealista/jtag_uart.qsys --block-symbol-file --output-directory=/home/dylanggf/Documents/Arqui2/proy2_Arqui2/FlujoRealista/jtag_uart --family="Cyclone V" --part=5CSEMA5F31C6
+Progress: Loading FlujoRealista/jtag_uart.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 18.1]
+Progress: Parameterizing module clk_0
+Progress: Adding jtag_uart_0 [altera_avalon_jtag_uart 18.1]
+Progress: Parameterizing module jtag_uart_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: jtag_uart.jtag_uart_0: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
+Warning: jtag_uart.jtag_uart_0: Interrupt sender jtag_uart_0.irq is not connected to an interrupt receiver
+Info: qsys-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate /home/dylanggf/Documents/Arqui2/proy2_Arqui2/FlujoRealista/jtag_uart.qsys --synthesis=VERILOG --output-directory=/home/dylanggf/Documents/Arqui2/proy2_Arqui2/FlujoRealista/jtag_uart/synthesis --family="Cyclone V" --part=5CSEMA5F31C6
+Progress: Loading FlujoRealista/jtag_uart.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 18.1]
+Progress: Parameterizing module clk_0
+Progress: Adding jtag_uart_0 [altera_avalon_jtag_uart 18.1]
+Progress: Parameterizing module jtag_uart_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: jtag_uart.jtag_uart_0: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
+Warning: jtag_uart.jtag_uart_0: Interrupt sender jtag_uart_0.irq is not connected to an interrupt receiver
+Info: jtag_uart: Generating jtag_uart "jtag_uart" for QUARTUS_SYNTH
+Info: jtag_uart_0: Starting RTL generation for module 'jtag_uart_jtag_uart_0'
+Info: jtag_uart_0:   Generation command is [exec /home/dylanggf/intelFPGA_lite/18.1/quartus/linux64/perl/bin/perl -I /home/dylanggf/intelFPGA_lite/18.1/quartus/linux64/perl/lib -I /home/dylanggf/intelFPGA_lite/18.1/quartus/sopc_builder/bin/europa -I /home/dylanggf/intelFPGA_lite/18.1/quartus/sopc_builder/bin/perl_lib -I /home/dylanggf/intelFPGA_lite/18.1/quartus/sopc_builder/bin -I /home/dylanggf/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I /home/dylanggf/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- /home/dylanggf/intelFPGA_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=jtag_uart_jtag_uart_0 --dir=/tmp/alt0256_5957835406542079994.dir/0002_jtag_uart_0_gen/ --quartus_dir=/home/dylanggf/intelFPGA_lite/18.1/quartus --verilog --config=/tmp/alt0256_5957835406542079994.dir/0002_jtag_uart_0_gen//jtag_uart_jtag_uart_0_component_configuration.pl  --do_build_sim=0  ]
+Info: jtag_uart_0: Done RTL generation for module 'jtag_uart_jtag_uart_0'
+Info: jtag_uart_0: "jtag_uart" instantiated altera_avalon_jtag_uart "jtag_uart_0"
+Info: rst_controller: "jtag_uart" instantiated altera_reset_controller "rst_controller"
+Info: jtag_uart: Done "jtag_uart" with 3 modules, 5 files
+Info: qsys-generate succeeded.
+Info: Finished: Create HDL design files for synthesis
